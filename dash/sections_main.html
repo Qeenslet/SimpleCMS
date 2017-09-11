@@ -1,0 +1,22 @@
+<h3>Разделы сайта</h3>
+<div style="float: right; margin-bottom: 5px">
+    <input type="button" class="btn btn-success" value="Новый" onclick="window.location.assign('index.php?section=dash&edit=sections&sect=0')">
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Название</th>
+        <th>Постоянная ссылка</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- BEGIN row -->
+    <tr style="cursor: pointer;" onclick="window.location.assign('index.php?section=dash&edit=sections&sect={ID}')">
+        <td>{N}</td>
+        <td>{NAME}</td>
+        <td>{HREF}</td>
+    </tr>
+    <!-- END row -->
+    </tbody>
+</table>

@@ -1,0 +1,150 @@
+<html style="margin-top:0 !important">
+<!--<![endif]-->
+<head>
+    <link rel='stylesheet' id='main-style' href='/test/content/theme/default/css/style2.css' type='text/css' media='all' />
+    <link href='https://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="ru">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <title>{SITENAME} | {SECTION_NAME}</title>
+    <link rel="shortcut icon" href="{ICO_URL}" type="image/png">
+    <script src="/test/content/theme/default/js/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $("#go").click(function(event) {
+                $("#top").slideUp(1000);
+            });
+        });
+    </script>
+</head>
+<body>
+<script>
+    $(document).ready(function(){
+
+
+        $("#go").mouseenter(function(){
+            $("#b2").css({
+                background:"rgba(255,48,48,0.6)"
+            });
+            $(".o").css({
+                width:"100%",
+                transition:"all 3s ease-in-out"
+            });
+        });
+        $("#go").mouseleave(function(){
+            $(".o").css({
+                width:"0%"
+            });
+            $(".o").css({
+                transition:"all 0.6s ease-in-out"
+            });
+            $("#b2").css({
+                background:"rgba(255,48,48,0)"
+
+            });
+        });
+
+
+    });
+
+
+</script>
+<div id='{HTML_TYPE}'></div>
+<div id="site">
+    {MENU}
+    <div id="polzasl"><h1 class="site-title" style="font-weight:normal; color:white; font-size:40px; text-align:center;">{SECTION_NAME}</h1></div>
+    {CONTENT}
+</div>
+<script>
+
+    $(document).ready(function(){
+        $("#servv2").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ2").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv1").click(function () {
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ1").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv3").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ3").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv4").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ4").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv5").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ5").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv6").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ7").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ6").stop().animate({right:0}, 700 );}, 700);
+        });
+        $("#servv7").click(function () {
+            $("#onlyServ1").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ3").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ4").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ5").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ6").stop().animate({right:"-50%"}, 700 );
+            $("#onlyServ2").stop().animate({right:"-50%"}, 700 );
+            setTimeout(function() {$("#onlyServ7").stop().animate({right:0}, 700 );}, 700);
+        });
+
+        var heightTitleGallary = $(".titleGallary").height();
+        $(".titleGallary").css("line-height",heightTitleGallary+"px");
+        $("#site").scroll(function () {
+            var par1 = $("#site").scrollTop();
+            var bottom = $(window).height()/3.33333333333;
+            var par2 = par1/2;
+            $("#fon2").css("bottom",bottom-par2+"px");
+        });
+        var flag = true;
+        $("#button").live("click", function(event) {
+            if(flag || event.shiftKey){
+                $("#mainmenu").slideDown();
+                flag = false;
+
+            }
+            else{
+                $("#mainmenu").slideUp();
+                flag = true;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

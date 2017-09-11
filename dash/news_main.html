@@ -1,0 +1,22 @@
+<h3>Опубликованные материалы</h3>
+<div style="float: right; margin-bottom: 5px">
+    <input type="button" class="btn btn-success" value="Новый" onclick="window.location.assign('index.php?section=dash&edit=news&publication=0')">
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Дата</th>
+        <th>Заголовок</th>
+        <th>Постоянная ссылка</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- BEGIN row -->
+    <tr style="cursor: pointer;" onclick="window.location.assign('index.php?section=dash&edit=news&publication={ID}')">
+        <td>{DT}</td>
+        <td>{NAME}</td>
+        <td>{HREF}</td>
+    </tr>
+    <!-- END row -->
+    </tbody>
+</table>

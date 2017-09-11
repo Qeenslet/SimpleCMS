@@ -1,0 +1,46 @@
+<h3>Администраторы сайта</h3>
+<div style="float: right; margin-bottom: 5px">
+    <input type="button" class="btn btn-success" value="Новый" onclick="window.location.assign('index.php?section=dash&edit=users&user=0')">
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Пользователь</th>
+        <th>Email</th>
+        <th>Дата добавления</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- BEGIN userline -->
+    <tr>
+        <td style="cursor: pointer;" onclick="window.location.assign('index.php?section=dash&edit=users&user={ID}')">{UNAME}</td>
+        <td>{UMAIL}</td>
+        <td>{UDATE}</td>
+        <td><input type="button" class="btn btn-danger" value="Удалить" onclick="usersBar.deleteUser('{ID}')"></td>
+    </tr>
+    <!-- END userline -->
+    </tbody>
+</table>
+<script>
+    var usersBar =
+    {
+        deleteUser: function(id)
+        {
+            $.ajax({url:"index.php?section=dash&edit=users&delete=1",
+                        method: "POST",
+                        data:
+                        {
+                            user: id
+                        }
+                    })
+                    .done(function (data)
+                    {
+                        window.location.reload();
+                    }).fail(function()
+            {
+                alert("Ошибка удаления!!!");
+            });
+        }
+    };
+</script>

@@ -1,0 +1,1481 @@
+
+body {
+
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+
+#b1 {
+
+    background: url(f1.jpg) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+
+}
+
+#b2 {
+
+    background: rgba(255,255,255,0);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    transition: all 1s ease-in-out;
+
+}
+
+#go {
+
+    border: 5px solid rgba(255,255,255,0.17);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: rgba(255,255,255,0.4);
+    top: 75%;
+    right: 16%;
+    position: absolute;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 4em;
+    z-index: 4;
+    transition: all 0.6s ease-in-out;
+
+}
+
+#go:hover {
+
+    color: white;
+    border-color: white;
+
+}
+
+.line {
+
+    top: 50%;
+    transition: all 0.6s ease-in-out;
+    width: 4999px;
+    position: absolute;
+    height: 4px;
+    background: rgba(255,255,255,0.17);
+
+}
+
+#wh1 {
+
+    left: -5003px;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+
+}
+
+#wh2 {
+
+    right: -5003px;
+
+}
+
+#line1 {
+
+    width: 0%;
+    height: 100%;
+    margin-right: 0;
+    position: relative;
+    background: white;
+    transition: all 3s ease-in-out;
+
+}
+
+#line2 {
+
+    width: 0%;
+    height: 100%;
+    margin-left: 0;
+    position: relative;
+    background: white;
+    transition: all 3s ease-in-out;
+
+}
+html {
+
+    overflow: hidden;
+}
+#top {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index:7;
+}
+
+#site {
+
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#menu {
+
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    bottom: 0;
+    background: #292931;
+    right: 0;
+    left: 0;
+    margin: auto;
+    -webkit-box-shadow: 0px -13px 27px -1px rgba(50, 50, 50, 0.33);
+    -moz-box-shadow:    0px -13px 27px -1px rgba(50, 50, 50, 0.33);
+    box-shadow:         0px -13px 27px -1px rgba(50, 50, 50, 0.33);
+}
+
+#mainmenu {
+
+    width: 100%;
+    height: 125px;
+    position: fixed;
+    bottom: 0;
+    display: none;
+    z-index: 5;
+}
+
+#fix {
+
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: none;
+    bottom: 0;
+    z-index: 4;
+}
+
+#button {
+
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.2);
+    transition: all .3s ease-in-out;
+
+}
+#buttonn{
+    position: fixed;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    display: none;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.2);
+    transition: all .3s ease-in-out;
+}
+#button2 {
+
+    background: url(polos.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#buttonn2 {
+
+    background: url(nazad.png) center no-repeat;
+    background-size: contain;
+    width: 75%;
+    height: 95%;
+    right: 6px;
+    position: absolute;
+}
+
+#button:hover {
+
+    background: rgba(255,255,255,0.4);
+}
+#buttonn:hover {
+
+    background: rgba(255,255,255,0.4);
+}
+
+#a1 {
+
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    background: url(fon1.jpg) center no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+
+#a1name {
+
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    float: right;
+    right: 0;
+}
+
+#a1name1 {
+
+    color: rgba(255,255,255,1);
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 70px;
+    font-weight: 400;
+    line-height: 1.1em;
+    text-indent: 0.8em;
+    margin: 50px 0px 20px -25px;
+    width: 700px;
+
+}
+
+#a1name2 {
+    color: rgba(255,255,255,1);
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2em;
+    letter-spacing: 1.5em;
+    text-indent: 0.1em;
+    width: 700px;
+    margin: -35px 0px 0px 30px;
+}
+
+#a2 {
+
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    background: black;
+    overflow: hidden;
+}
+
+#fon2 {
+
+    width: 100%;
+    height: 120%;
+    bottom: 30vh;
+    z-index: 0;
+    background: url(fon2.jpg) center no-repeat;
+    background-size: cover;
+    position: absolute;
+
+}
+
+
+#qw {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+}
+
+.menu .menu-item {
+
+    float: left;
+    list-style-type: none;
+    width: 16.6666666%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.menu .menu-item a {
+
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 20px;
+    text-decoration: none;
+    color: #66666a;
+    display: block;
+    height: 100%;
+    transition: all .2s ease-in-out;
+    outline: none;
+    text-align: center;
+}
+
+.menu .menu-item a:hover {
+
+    color: white;
+    background: #38383f;
+
+}
+
+.menu {
+
+    padding: 0;
+    margin-top: 0;
+    margin: 0;
+}
+
+#socic {
+
+    width: 100%;
+    float: right;
+    height: 50%;
+    margin-right: 0;
+    position: relative;
+}
+
+.ic {
+
+    width: 50px;
+    height: 50px;
+    background-size: contain !important;
+    float: left;
+    border-radius: 15px;
+}
+
+#ic1 {
+
+    background: url(1.png) center no-repeat;
+}
+
+#ic2 {
+
+    background: url(2.png) center no-repeat;
+}
+
+#ic3 {
+
+    background: url(7.png) center no-repeat;
+}
+
+#ic4 {
+
+    background: url(4.png) center no-repeat;
+}
+
+#ic5 {
+
+    background: url(5.png) center no-repeat;
+}
+
+#ic6 {
+
+    background: url(6.png) center no-repeat;
+}
+
+#socic2 {
+
+    width: 300px;
+    margin: 0 auto;
+
+}
+
+.sylka {
+
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+#titleDiv{
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+#textTitle{
+    color: white;
+    font-size: 50px;
+    margin: auto;
+    position: relative;
+    display: block;
+    font-family: 'Anglecia Pro Dsp';
+    text-align: center;
+    height: 100px;
+    top: 40px;
+}
+#lineTitle{
+    width: 100%;
+    position: relative;
+    height: 3px;
+    top: -25px;
+}
+#lineTitle1{
+    width: 50%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(180deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: -webkit-linear-gradient(180deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: -o-linear-gradient(180deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: -ms-linear-gradient(180deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: linear-gradient(270deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    float: left;
+}
+#lineTitle2{
+    width: 50%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(0deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgb(255, 255, 255) 30%,  rgba(255, 255, 255,0) 100%);
+    background: -o-linear-gradient(0deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: -ms-linear-gradient(0deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    background: linear-gradient(90deg, rgb(255, 255, 255) 30%, rgba(255, 255, 255,0) 100%);
+    float: left;
+}
+#news{
+    width: 90%;
+    position: relative;
+    height: 75%;
+    margin: 0 auto;
+}
+.new{
+    width: 40%;
+    position: relative;
+    float: left;
+    padding-right:5%;
+    padding-left:5%;
+    padding-top: 2%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.new:hover .image{
+    height: 105%;
+    width: 105%;
+}
+.new:hover .titleNews{
+    background: rgba(0,0,0,0.7);
+}
+.new:hover .contentNews{
+    background: rgba(0,0,0,0.7);
+}
+.new2{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    float: left;
+    transition:all .5s ease-in-out;
+}
+.imagge{
+    width: 40%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    float: left;
+    transition:all .5s ease-in-out;
+}
+.text{
+    width: 60%;
+    height: 100%;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+.titleNews{
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    margin-bottom: 3px;
+    height: 30%;
+    font-family: 'Anglecia Pro Dsp';
+    font-size:1.3em;
+    padding:5px;
+    transition:all .5s ease-in-out;
+
+}
+.contentNews{
+    width: 100%;
+    height: 70%;
+    padding: 10px;
+    font-family: 'Anglecia Pro Dsp';
+    color: white;
+    background: rgba(0,0,0,0.4);
+    transition:all .5s ease-in-out;
+}
+.titleNews a{
+    color: white;
+    font-family: 'Anglecia Pro Dsp';
+    text-decoration: none;
+}
+#modalWindow{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    z-index: 1000000;
+}
+#modalWindow2{
+    width: 800px;
+    height: 450px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    background: white;
+    padding: 1%;
+    padding-right: 0;
+    overflow-y:scroll;
+}
+#twomenu{
+    height: 60px;
+    width:60px;
+    float:right;
+    top:10px;
+    right:0px;
+    position: absolute;
+    background-size: cover;
+    z-index: 20001;
+    cursor: pointer;
+}
+#menuU{
+    display: block;
+    width:32px;
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    margin-top:0px;
+    transition:all .2s ease-in-out;
+}
+#menuU:after{
+    content: " ";
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 32px;
+    background: black;
+    top:5px;
+    transition:all .2s ease-in-out;
+    transform:rotate(-45deg)translateY(-10px)translateX(10px)
+}
+#menuU:before{
+    content: " ";
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 32px;
+    background: black;
+    top:-10px;
+    transition:all .2s ease-in-out;
+    transform: rotate(45deg);
+}
+#hover{
+    position: absolute;
+    padding:30px;
+    margin:0 auto;
+    right: 0;
+    left:0;
+}
+#hover:hover #menuU:after{
+    top:7px;
+}
+#hover:hover #menuU:before{
+    top:-13px;
+}
+#titlenewsBlock{
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+.newsText{
+    width: 90%;
+    position: absolute;
+    float: right;
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 15px;
+}
+.hrefA{
+    display: block;
+}
+#gallereya{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    background:url(1Peresvet.jpg) center no-repeat;
+    background-size: cover;
+}
+#sht1{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: 40%;
+    width: 100%;
+    background: url(sht1.jpg) center no-repeat;
+    background-size: cover;
+    -webkit-box-shadow: 0px 17px 84px 8px rgba(0,0,0,0.58);
+    -moz-box-shadow: 0px 17px 84px 8px rgba(0,0,0,0.58);
+    box-shadow: 0px 17px 84px 8px rgba(0,0,0,0.58);
+}
+#sht2{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    height: 40%;
+    width: 100%;
+    background: url(sht2.jpg) center no-repeat;
+    background-size: cover;
+    -webkit-box-shadow: 0px -17px 84px 8px rgba(0,0,0,0.58);
+    -moz-box-shadow: 0px -17px 84px 8px rgba(0,0,0,0.58);
+    box-shadow: 0px -17px 84px 8px rgba(0,0,0,0.58);
+}
+#allTitleGallary{
+    height: 20%;
+    width: 100%;
+    top: 40%;
+    position: absolute;
+}
+.titleGallary{
+    float: left;
+    width: 25%;
+    height: 100%;
+    transition:all .4s ease-in-out;
+    color: white;
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 3em;
+    list-style-type: none;
+    text-align: center;
+    cursor: pointer;
+}
+.titleGallary:hover{
+    background: rgba(0,0,0,0.4);
+}
+#fonGallary{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: none;
+}
+#fonGallary2{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    background:url(1Peresvet.jpg) center no-repeat;
+    background-size: cover;
+}
+#fonGallary3{
+    background: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+}
+.owl-wrapper-outer {
+    width: 100% !important;
+}
+.owl-wrapper {
+    width: 100% !important;
+}
+.owl-item {
+    position: relative;
+    width: 18% !important;
+    padding: 1%;
+}
+.box a img{
+    width: 100%;
+    height: 100%;
+}
+.box{
+    width: 100%;
+    height: 100%;
+}
+#wrapGallary{
+    width: 90%;
+    margin:0% auto;
+}
+#fonMusey{
+    width: 100%;
+    height: 100%;
+    overflow-y:scroll;
+    display: none;
+    position: relative;
+}
+#fonPicture{
+    width: 100%;
+    height: 100%;
+    overflow-y:scroll;
+    display: none;
+    position: relative;
+}
+#fonMusey2{
+    width: 90%;
+    margin: 10% auto;
+    position: relative;
+}
+.museuBlock{
+    float: left;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#eksponat1{
+    background: url(a1.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+}
+#eksponat2{
+    background: url(a2.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat3{
+    background: url(a3.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat4{
+    background: url(a4.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat5{
+    background: url(a5.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat6{
+    background: url(a6.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat7{
+    background: url(a7.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat8{
+    background: url(a8.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat9{
+    background: url(a9.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat10{
+    background: url(a10.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat11{
+    background: url(a11.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat12{
+    background: url(a12.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat13{
+    background: url(a13.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat14{
+    background: url(a14.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat15{
+    background: url(a15.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat16{
+    background: url(a16.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat17{
+    background: url(a17.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat18{
+    background: url(a18.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat19{
+    background: url(a19.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat20{
+    background: url(a20.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat21{
+    background: url(a21.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat22{
+    background: url(a22.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat23{
+    background: url(a23.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat24{
+    background: url(a24.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#eksponat25{
+    background: url(a25.jpg) center no-repeat;
+    background-size: contain;
+    height: 70%;
+    width: 100%;
+}
+#weksponat1{
+    background: url(a1.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat2{
+    background: url(a2.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat3{
+    background: url(a3.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat4{
+    background: url(a4.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat5{
+    background: url(a5.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat6{
+    background: url(a6.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat7{
+    background: url(a7.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat8{
+    background: url(a8.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat9{
+    background: url(a9.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat10{
+    background: url(a10.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat11{
+    background: url(a11.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat12{
+    background: url(a12.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat13{
+    background: url(a13.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat14{
+    background: url(a14.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat15{
+    background: url(a15.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat16{
+    background: url(a16.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat17{
+    background: url(a17.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat18{
+    background: url(a18.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat19{
+    background: url(a19.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat20{
+    background: url(a20.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat21{
+    background: url(a21.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat22{
+    background: url(a22.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat23{
+    background: url(a23.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat24{
+    background: url(a24.jpg) center no-repeat;
+    background-size: contain;
+}
+#weksponat25{
+    background: url(a25.jpg) center no-repeat;
+    background-size: contain;
+}
+.pictureMusey{
+    width: 100%;
+    height: 40%;
+    background-size: contain;
+    margin-top: -45px;
+}
+.titleMusey{
+    padding: 2%;
+    font-family: 'Anglecia Pro Dsp';
+    font-size:20px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+#services{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: url(Nevskaya-bitva2.jpg) center no-repeat;
+    background-size: cover;
+}
+#serv{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+.servv{
+    line-height: 75px;
+    color: white;
+    font-size: 30px;
+    text-align:center;
+    width:100%;
+    list-style-type: none;
+    font-family: 'Anglecia Pro Dsp';
+    cursor: pointer;
+    transition:all .25s ease-in-out;
+}
+.servv:hover{
+    background: rgba(0,0,0,0.6);
+}
+#alignServ{
+    margin: auto;
+    width: 100%;
+    height: 525px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top:0;
+}
+.servDiv{
+    padding: 2%;
+    color: white;
+    font-family: 'Anglecia Pro Dsp';
+    font-size: 18px;
+    width: 46%;
+    height: 100%;
+    position: fixed;
+    float: right;
+    right: -50%;
+    top:0;
+
+
+    background: rgba(0,0,0,0.6);
+}
+#onlyServ1{
+    right: 0%;
+}
+.vid{
+    width: 40%;
+    padding: 5%;
+    height: 300px;
+    float: left;
+    padding-top: 0;
+    position: relative;
+}
+#videoGallary{
+    display: none;
+    width: 100%;
+}
+.wrapGallary{
+    width: 90%;
+    margin:10% auto;
+}
+
+#pred {
+
+    background: url(pred.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#svadba {
+
+    background: url(svadba.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 85%;
+}
+
+
+
+#fes {
+
+    background: url(fes.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#trav {
+
+    background: url(trav.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#hut {
+
+    background: url(hut.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#kino {
+
+    background: url(kino.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#pod {
+
+    background: url(pod.png) center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 57%;
+}
+
+#cen1 {
+
+    margin-top: 125px;
+}
+
+#cen2 {
+
+    margin-top: 45px;
+}
+
+#cen3 {
+
+    margin-top: 125px;
+}
+
+#cen4 {
+
+    margin-top: 125px;
+}
+
+#cen5 {
+
+    margin-top: 125px;
+}
+
+#cen6 {
+
+    margin-top: 85px;
+}
+
+#cen7 {
+
+    margin-top: 125px;
+}
+
+#daty {
+
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    top: 85%;
+
+}
+
+#pol {
+    background: white;
+    width: 100%;
+    height: 7px;
+    top: 30px;
+    position: relative;
+    z-index: 1;
+    -webkit-box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+}
+
+#d1 {
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 1.5%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d2 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 12.875%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d3 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 24.75%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d4 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 36.625%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d5 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 48.5%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d6 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 60.375%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d7 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 72.5%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d8 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 84.125%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+#d9 {
+    left: 100px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    left: 95%;
+    position: absolute;
+    z-index: 2;
+    top: -12.5px;
+}
+
+.a {
+    -webkit-box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.t1 {
+    font-size: 20px;
+    color: white;
+    top: 40px;
+    position: relative;
+    left: -4px;
+
+}
+
+#bd1 {
+
+    background: url(1323.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd2 {
+
+    background: url(1391.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd3 {
+
+    background: url(1392.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd4 {
+
+    background: url(1397.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd5 {
+
+    background: url(1506.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd6 {
+
+    background: url(1590.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd7 {
+
+    background: url(1655.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd8 {
+
+    background: url(1702.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+#bd9 {
+
+    background: url(2010.png) center no-repeat;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+.bd{
+    display: none;
+}
+
+.zatem {
+
+}
+
+#footer {
+
+    width: 100%;
+    height: 50px;
+    background: rgba(1,157,170,0.7);
+}
+
+#zolotoi {
+
+    right: 2%;
+    color: white;
+    position: absolute;
+    top: 202.5%;
+    font-family: 'Anglecia Pro Dsp';
+
+}
+
+#zolotoi2 {
+
+    left: 2%;
+    color: white;
+    position: absolute;
+    top: 202.5%;
+    font-family: 'Anglecia Pro Dsp';
+
+}
+#fonnews{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: url(paper.jpg) center no-repeat;
+    background-size: cover;
+}
+#fonzasl{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: url(fonzasl.jpg) center no-repeat;
+    background-size: cover;
+}
+#foncont{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: url(foncont.jpg) center no-repeat;
+    background-size: cover;
+}
+#fonabout{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: url(fonabout.jpg) center no-repeat;
+    background-size: cover;
+}
+#polzasl{
+    position: absolute;
+    background:rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100px;
+    top: 0;
+}
+#congzasl{
+    position: absolute;
+    background:rgba(0,0,0,0.5);
+    width: 70%;
+    right: 0;
+    left: 0;
+    margin:20% auto;
+    padding: 2%;
+
+}
+#congzasl2{
+    position: absolute;
+    background:rgba(0,0,0,0.1);
+    width: 70%;
+    right: 0;
+    left: 0;
+    margin:20% auto;
+    padding: 2%;
+
+}

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админка HL</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{PATH_TO_ADMIN}assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{PATH_TO_ADMIN}assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{PATH_TO_ADMIN}assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+<div class="modal fade" tabindex="-1" role="dialog" id="dashModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalTitle"></h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="control.submit()">Сохранить</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php">
+                        <img src="{PATH_TO_ADMIN}assets/img/logo.png" />
+
+                    </a>
+                    
+                </div>
+              
+                <span class="logout-spn" >
+                  <a href="index.php?section=dash&act=logout" style="color:#fff;"><i class="fa fa-power-off" aria-hidden="true"></i>
+                  </a>
+
+                </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    {ADMIN_MENU}
+                </ul>
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">{CONTENT}</div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+    <div class="footer">
+      
+    
+            <div class="row">
+                <div class="col-lg-12" >
+                    &copy;  2017 Hamster Libre | Design by: <a href="http://binarytheme.com" style="color:#fff;" target="_blank">www.binarytheme.com</a>
+                </div>
+            </div>
+        </div>
+          
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{PATH_TO_ADMIN}assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{PATH_TO_ADMIN}assets/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{PATH_TO_ADMIN}assets/js/custom.js"></script>
+
+    <script src="{PATH_TO_ADMIN}assets/js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+                        selector:'textarea',
+                        plugins: ['code image autolink link hr visualblocks visualchars paste textcolor'],
+                        language: 'ru',
+                        width: 900,
+                        height: 400
+                    });
+    </script>
+   <script>
+       var control =
+       {
+           callModal: function(filename, filepath)
+           {
+               $('#modalTitle').html(filename);
+               var html = '<img src="' + filepath + '" alt="example" width="500px">';
+               html += '<h4>Ссылка на изображение:</h4>';
+               html += '<h5>' + filepath + '</h5>';
+               html += '<form method="post">';
+               html += '<input type="hidden" value="' + filename+ '" name="filename">';
+               html += '<div class="form-group">';
+               html += '<label for="modalDimensions">Создать копию с разрешением</label>';
+               html += '<input type="text" class="form-control" id="modalDimensions" name="dimensions" placeholder="ширина X высота"></div>';
+               html += '</form>';
+               html += '<input type="button" value="Удалить" onclick="control.requestDelete(\'' + filename + '\')" class="btn btn-danger">';
+               $('#modalBody').html(html);
+               $('#dashModal').modal('show');
+           },
+           requestDelete: function(filename)
+           {
+               $.ajax({
+                   type: "POST",
+                   url: "index.php?section=dash&edit=files",
+                   data:({to_delete:filename}),
+                   success: function()
+                   {
+                       window.location.reload();
+                   }
+               });
+           },
+           submit: function()
+           {
+               var data = $('form').serialize();
+               $.ajax({
+                   type: "POST",
+                   url: "index.php?section=dash&edit=files&resize=1",
+                   data: data,
+                   success: function()
+                   {
+                      window.location.reload();
+                   }
+               });
+           }
+       };
+   </script>
+</body>
+</html>
