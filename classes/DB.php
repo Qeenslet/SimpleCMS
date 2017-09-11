@@ -50,7 +50,10 @@ class DB
             $result2 = $st2->fetchAll();
             $st3 = $db->query('SELECT name FROM sqlite_master WHERE type = \'users\'');
             $result3 = $st3->fetchAll();
-            if (sizeof($result) == 0 || sizeof($result2) == 0 || sizeof($result3) == 0)
+
+            $st4 = $db->query("SELECT name FROM sqlite_master WHERE type = 'locations'");
+            $result4 = $st4->fetchAll();
+            if (sizeof($result) == 0 || sizeof($result2) == 0 || sizeof($result3) == 0 || sizeof($st4) == 0)
             {
                 $this->makeTable($db);
                 $this->db = $db;
@@ -60,7 +63,7 @@ class DB
 
                 $this->db = $db;
             }
-            //$db->exec("DELETE FROM news WHERE id > 0");
+
         }
         catch (PDOException $e)
         {
@@ -88,6 +91,16 @@ class DB
                                                              date_added DATE NOT NULL,
                                                              u_mail VARCHAR(255) NOT NULL,
                                                              u_pass VARCHAR(255) NOT NULL);');
+        $db->exec('CREATE TABLE IF NOT EXISTS locations ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                                             ip VARCHAR(255) NOT NULL,
+                                                             hostname VARCHAR(255),
+                                                             city VARCHAR(255),
+                                                             region VARCHAR(255),
+                                                             country VARCHAR(5),
+                                                             loc VARCHAR(255),
+                                                             date DATE NOT NULL,
+                                                             org VARCHAR(255),
+                                                             visit INTEGER);');
         $st = $db->query("SELECT id FROM users WHERE u_name = 'developer'");
         $isAdmin = $st->fetchAll();
         if (sizeof($isAdmin) == 0)

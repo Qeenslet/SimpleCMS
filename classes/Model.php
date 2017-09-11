@@ -38,7 +38,7 @@ class Model
     }
 
 
-    protected function fetchAll($sql, $params)
+    protected function fetchAll(&$sql, $params)
     {
 
         if (!empty($params))
@@ -55,7 +55,7 @@ class Model
     }
 
 
-    protected function fetchRow($sql, $params)
+    protected function fetchRow(&$sql, $params)
     {
         if (!empty($params))
         {

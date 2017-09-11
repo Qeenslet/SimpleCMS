@@ -11,6 +11,7 @@ require_once('Project.php');
 require_once('Dashboard.php');
 require_once('Section.php');
 require_once('Guardian.php');
+require_once ('Locator.php');
 
 class Router
 {
@@ -77,6 +78,8 @@ class Router
 
                 }
             }
+            $locator = new Locator();
+            $locator->locate();
             $project = new Project();
             $project->mainPage();
         }
