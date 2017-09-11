@@ -27,7 +27,7 @@ class Sypher
 
     public static function createFirstUser()
     {
-        $path = '195257Wk';
+        $path = '1234';
         $name = 'developer';
         $email = 'egorgulidow@mail.ru';
         $dt = new DateTime();
