@@ -139,4 +139,15 @@ class Imaginator
     {
         $this->resource = imagecreatefromstring(file_get_contents($this->file));
     }
+
+
+    public function getProportions()
+    {
+        $this->getResource();
+        $this->defineDimensions();
+        if (!empty($this->x))
+        {
+            return $this->y / $this->x;
+        }
+    }
 }

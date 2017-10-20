@@ -1,12 +1,18 @@
-{WARNING}
-<form method = "post" enctype = 'multipart/form-data'>
-    <div class="form-group">
-        <label for="inputFile">Загрузка файла</label>
-        <input type="file" id="inputFile" name = "filename" />
+<form class="box" method="post" action="index.php?section=dash&edit=files&upload=1" enctype="multipart/form-data">
+    <div class="box__input" style="padding: 15px">
+        <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+        <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+        <button class="box__button" type="submit">Upload</button>
     </div>
-
-    <button type="submit" class="btn btn-default">Загрузить</button>
+    <div style="padding: 15px">
+        <div class="box__uploading">Загрузка...&hellip;</div>
+        <div class="box__success">Готово!</div>
+        <div class="box__error">Ошибка! <span></span>.</div>
+    </div>
 </form>
+<div style="margin-top: 10px" id="myfiles">
 <!-- BEGIN files_row -->
 {FILEROW}
 <!-- END files_row -->
+</div>
+<script src="{PATH_TO_ADMIN}assets/js/upload.js"></script>

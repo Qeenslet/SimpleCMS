@@ -86,4 +86,18 @@ class Dash_Model extends Model
                  FROM users WHERE id = :id';
         return $this->fetchRow($sql, array('id' => $id));
     }
+
+
+    public function getAllLocations()
+    {
+        $sql = "SELECT * FROM locations";
+        return $this->fetchAll($sql, null);
+    }
+
+
+    public function getLimitedLocations($start, $end)
+    {
+        $sql = "SELECT * FROM locations WHERE date >= :dt1 AND date <= :dt2 AND country IS NOT NULL";
+        return $this->fetchAll($sql, ['dt1' => $start, 'dt2' => $end]);
+    }
 }

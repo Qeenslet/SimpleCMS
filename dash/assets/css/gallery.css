@@ -1,0 +1,32 @@
+
+.mosaicflow__column {
+    float:left;
+}
+.mosaicflow__item img {
+    display:block;
+    width:100%;
+    height:auto;
+}
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+    display: none;
+}
+.box.has-advanced-upload {
+    background-color: white;
+    outline: 2px dashed black;
+    outline-offset: -10px;
+}
+.box.has-advanced-upload .box__dragndrop {
+    display: inline;
+}
+.box.is-dragover {
+    background-color: lightblue;
+}
+.box.is-uploading .box__input {
+    visibility: none;
+}
+.box.is-uploading .box__uploading {
+    display: block;
+}

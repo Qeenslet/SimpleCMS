@@ -28,6 +28,10 @@ class Project
         $subfolder = $this->getSetting('subfolder');
         if (!empty($subfolder)) $subfolder = '/' . $subfolder;
         else  $subfolder = '';
+        $mainPage = [];
+        $mainPage['{SECTION_HREF}'] =  $this->getSetting('url_path') ? $this->getSetting('url_path') : '/';
+        $mainPage['{SECTION}'] = 'Главная';
+        $params['hrefs'][] = $mainPage;
         foreach($data as $one)
         {
             $tmp = array();

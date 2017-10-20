@@ -11,12 +11,19 @@ require_once('Dash_Model.php');
 require_once('FormEditor.php');
 require_once('Validator.php');
 require_once('Sypher.php');
+require_once ('Imaginator.php');
 
 class Dashboard extends Project
 {
     private $standartAttrs = [];
     protected $model;
     private $inside = '';
+    private $europeCodes = ['AT', 'AL', 'AD', 'BY', 'BE', 'BG', 'BA', 'HU', 'DE', 'GG',
+                            'GI', 'GR', 'DK', 'JE', 'IE', 'IS', 'ES', 'IT', 'LV', 'LT',
+                            'LI', 'LU', 'MK', 'MT', 'MD', 'MC', 'NL', 'NO', 'IM', 'VA',
+                            'PL', 'PT', 'RU', 'RO', 'SM', 'RS', 'SK', 'SI', 'GB', 'UA',
+                            'FO', 'FI', 'FR', 'HR', 'ME', 'CZ', 'CH', 'SE', 'SJ', 'AX', 'EE'];
+
 
     public function __construct()
     {
@@ -99,7 +106,8 @@ class Dashboard extends Project
 
     private function mainDash()
     {
-        $content = Pagemaker::render('dash/main_dash.html', []);
+        $map = $this->getRecentVisits();
+        $content = Pagemaker::render('dash/main_dash.html', ['{LOCATIONS}' => json_encode($map['data']), '{MAP}' => $map['map']]);
         $this->uniter('{INDEX}', $content);
     }
 
@@ -288,33 +296,37 @@ class Dashboard extends Project
             exit;
         }
         $params['{WARNING}'] = '';
-        if (!empty($_FILES))
+        if (!empty($_GET['upload']))
         {
-            $res = $this->uploader();
-            if ($res)
-                $params['{WARNING}'] = '<h3 style="color: red">Возникла проблема: ' . $res . '</h3>';
-            else
-                $params['{WARNING}'] = '<span style="color:green">Успешно загружен!</span>';
-        }
-        $uploaded = $this->getImages();
-        $tmp = array();
-        $rows = array();
-        $n = 1;
-        foreach ($uploaded as $one)
-        {
-            $tmp[] = $one;
-            $n++;
-            if ($n > 6)
+            if (!empty($_FILES))
             {
-                $n = 1;
-                $rows[] = $this->groupInRow($tmp);
-                $tmp = [];
+                $res = $this->uploader();
+                print_r($res);
+                return json_encode($res);
             }
         }
-        $rows[] = $this->groupInRow($tmp);
-        foreach ($rows as $row)
+
+        $uploaded = $this->getImages();
+        $srcPath = $this->getSetting('url_path');
+        foreach ($uploaded as $one)
         {
-            $params['files_row'][]['{FILEROW}'] = Pagemaker::render('dash/image_row.html', $row);
+            $imaginator = new Imaginator($one, '');
+            $prop = $imaginator->getProportions();
+            $w = rand(100, 300);
+            $h = rand(300, 400);
+            if ($prop < 1)
+            {
+                $h = $prop * $w;
+            }
+            else
+            {
+                $w = $prop * $h;
+            }
+            $row = array('{SRC}' => $srcPath . '/uploads/' . $one,
+                         '{FILE}' => $one,
+                         '{W}' => $w,
+                         '{H}' => $h);
+            $params['files_row'][]['{FILEROW}'] = Pagemaker::render('dash/image_row2.html', $row);
         }
         $content = Pagemaker::render('dash/file_uploader.html', $params);
         $this->uniter('{FILES}', $content);
@@ -324,30 +336,8 @@ class Dashboard extends Project
 
     private function uploader()
     {
-        $blacklist = array(".php", ".phtml", ".php3", ".php4", ".html", ".htm");
-        $error = null;
-        foreach ($blacklist as $item)
-        {
-            if(preg_match("/$item\$/i", $_FILES['filename']['name'])) $error = 'Неверный тип файла!';
-        }
-        if (!$error)
-        {
-            $type = $_FILES['filename']['type'];
-            if (($type != "image/jpg") && ($type != "image/jpeg") && ($type != 'image/png'))
-            {
-                return 'Файл не является изображением!';
-            }
-            $uploadfile = "/uploads/".$_FILES['filename']['name'];
-            try
-            {
-                move_uploaded_file($_FILES['filename']['tmp_name'], $uploadfile);
-            }
-            catch (Exception $e)
-            {
-                return $e->getMessage();
-            }
-        }
-        return $error;
+        $result = $this->saveImages($_FILES);
+        return json_encode($result);
     }
 
 
@@ -373,9 +363,10 @@ class Dashboard extends Project
     private function groupInRow($files)
     {
         $result = [];
+        $srcPath = $this->getSetting('url_path');
         foreach ($files as $file)
         {
-            $tmp['{SRC}'] = '/uploads/' . $file;
+            $tmp['{SRC}'] = $srcPath . '/uploads/' . $file;
             $tmp['{FILE}'] = $file;
             $result['element'][] = $tmp;
         }
@@ -464,5 +455,116 @@ class Dashboard extends Project
         $edit->setParams('users', $id);
         $content = $edit->getForm();
         $this->uniter('{USERS}', $content);
+    }
+
+
+    /**
+     * @return array
+     */
+    private function getRecentVisits()
+    {
+        $today = new DateTime();
+        $start = clone $today;
+        $interval = new DateInterval('P30D');
+        $interval->invert = 1;
+        $start->add($interval);
+        $locations = $this->model->getLimitedLocations($start->format('Y-m-d'), $today->format('Y-m-d'));
+        $result = [];
+        $tmp = [];
+        $map = 'custom/world';
+        $map2 = 'custom/europe';
+        $result['map'] = $map2;
+        //TEST!!!!
+        $locations = [
+            ['country' => 'RU', 'visit' => 5],
+            ['country' => 'RU', 'visit' => 3],
+            ['country' => 'EE', 'visit' => 3],
+            ['country' => 'RU', 'visit' => 5],
+            ['country' => 'BY', 'visit' => 5],
+            ['country' => 'BY', 'visit' => 5],
+            ['country' => 'BY', 'visit' => 5],
+            ['country' => 'UA', 'visit' => 3],
+            ['country' => 'UA', 'visit' => 2],
+            ['country' => 'FR', 'visit' => 1],
+        ];
+        foreach ($locations as $one)
+        {
+            if (!isset($tmp[$one['country']])) $tmp[$one['country']] = 0;
+            $tmp[$one['country']] += $one['visit'];
+            if (!in_array($one['country'], $this->europeCodes))
+            {
+                $result['map'] = $map;
+            }
+        }
+        foreach ($tmp as $code => $amt)
+        {
+            //$code = mb_strtolower($code);
+            $result['data'][] = ['id' => $code, 'visit' => $amt];
+        }
+        return $result;
+    }
+
+
+    /**
+     * Множественное сохранение картинок
+     * @param array $files
+     * @return mixed
+     */
+    private function saveImages(Array $files)
+    {
+        $result['success'] = false;
+        $blacklist = array(".php", ".phtml", ".php3", ".php4", ".html", ".htm");
+        $error = null;
+        $images = [];
+        foreach ($files['files']['name'] as $index => $name)
+        {
+            //print_r('here'); die;
+            if (empty($name)) continue;
+            foreach ($blacklist as $item)
+            {
+                if(preg_match("/$item\$/i", $name)) $error = 'Неверный тип файла! ' . $name;
+            }
+            if (!$error)
+            {
+                $type = $files['files']['type'][$index];
+                if (($type != "image/jpg") && ($type != "image/jpeg") && ($type != 'image/png'))
+                {
+                    $error = 'Файл не является изображением! ' . $name;
+                    break;
+                }
+                if (empty($error))
+                {
+                    $tmp = [];
+                    $uploadfile = "uploads/" . $name;
+                    try
+                    {
+                        move_uploaded_file($files['files']['tmp_name'][$index], $uploadfile);
+                    }
+                    catch (Exception $e)
+                    {
+                        $error = $e->getMessage();
+                        break;
+                    }
+                    $urlPath = $this->getSetting('url_path') ? $this->getSetting('url_path') : '';
+                    $tmp['src'] = $urlPath . '/' . $uploadfile;
+                    $tmp['filename'] = $name;
+                    $images[] = $tmp;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+        if ($error)
+        {
+            $result['error'] = $error;
+        }
+        else
+        {
+            $result['success'] = true;
+            $result['images'] = $images;
+        }
+        return $result;
     }
 }
