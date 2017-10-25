@@ -122,8 +122,8 @@ class Project
     private function prepareNews(Array $data)
     {
         $template = $this->getThemePass() . 'news_template.html';
-        $content['{IMG}'] = !empty($data['image']) ? '<img alt="image" src="../' . $data['image'] . '" style="max-width: 600px">' : '';
-        $content['{HTML'] = $data['html'];
+        $content['{IMG}'] = !empty($data['image']) ? '<img alt="image" src="' . $data['image'] . '" style="max-width: 600px">' : '';
+        $content['{HTML}'] = $data['html'];
         return Pagemaker::render($template, $content);
     }
 

@@ -14,6 +14,10 @@ class Imaginator
     protected $y;
     protected $file;
     protected $id;
+    private $rotationCorrections = [90 => 270,
+                                    180 => 180,
+                                    270 => 90,
+                                    0 => 0];
 
     public function __construct($file, $id)
     {
@@ -21,40 +25,66 @@ class Imaginator
         $mainFile = explode('.', $file);
         $this->id = $mainFile[0] . $id;
         $this->file = 'uploads/' . $file;
+        $this->getResource();
     }
 
+    /**
+     * Просто сохранить если картинка по ссылке например
+     */
     public function saveImage()
     {
-        $this->getResource();
         imagejpeg($this->resource, 'upload/image_'.$this->id.".jpg");
         $this->resource = null;
     }
 
 
+    /**
+     * Сохранить по заданным размерам
+     * @param $x
+     * @param $y
+     */
     public function saveImageResize($x, $y)
     {
-        $this->getResource();
         $this->cropResize($x, $y);
-        imagejpeg($this->resource, 'uploads/image_'.$this->id.".jpg");
+        imagejpeg($this->resource, 'uploads/'.$this->id.".jpg");
         $this->resource = null;
     }
 
+    /**
+     * Крупная копия
+     */
     public function saveBig()
     {
-        $this->getResource();
         $this->cropResize(1150, 450);
         imagejpeg($this->resource, 'uploads/image_'.$this->id.".jpg");
         $this->resource = null;
     }
 
+    /**
+     * Уменьшенная копия
+     */
     public function saveCropped()
     {
-        $this->getResource();
-        $this->resizeCrop(230, 140);
-        imagejpeg ($this->resource, 'uploads/image_'.$this->id.".jpg");
+        $this->defineDimensions();
+        if ($this->x > $this->y)
+        {
+            $this->resizeCrop(330, 200);
+        }
+        else
+        {
+            $this->resizeCrop(300, 492);
+        }
+
+        imagejpeg ($this->resource, 'uploads/thumbs/'.$this->id.".jpg");
         $this->resource = null;
     }
 
+    /**
+     * Ресайзить
+     * @param $w
+     * @param $h
+     * @param bool $force
+     */
     protected function resize($w, $h, $force=false)
     {
         if (!$force)
@@ -69,6 +99,11 @@ class Imaginator
         $this->resource = imagescale($this->resource, $w, $h);
     }
 
+    /**
+     * Обрезать
+     * @param $w
+     * @param $h
+     */
     protected function crop($w, $h)
     {
         $this->defineDimensions();
@@ -96,6 +131,11 @@ class Imaginator
         }
     }
 
+    /**
+     * Ресайзить, затем обрезать
+     * @param $w
+     * @param $h
+     */
     protected function resizeCrop($w, $h)
     {
         $this->defineDimensions();
@@ -112,6 +152,11 @@ class Imaginator
         $this->crop($w, $h);
     }
 
+    /**
+     * Обрезать и ресазить
+     * @param $w
+     * @param $h
+     */
     protected function cropResize($w, $h)
     {
         $this->defineDimensions();
@@ -122,32 +167,60 @@ class Imaginator
     }
 
 
+    /**
+     * Сторона x
+     * @return mixed
+     */
     public function getDimension()
     {
-        $this->getResource();
         $this->defineDimensions();
         return $this->x;
     }
 
+    /**
+     * Определение пропорций
+     */
     protected function defineDimensions()
     {
         $this->x = imagesx($this->resource);
         $this->y = imagesy($this->resource);
     }
 
+    /**
+     * Получение ресурса
+     */
     protected function getResource()
     {
         $this->resource = imagecreatefromstring(file_get_contents($this->file));
     }
 
 
+    /**
+     * пропорции
+     * @return float|int
+     */
     public function getProportions()
     {
-        $this->getResource();
         $this->defineDimensions();
         if (!empty($this->x))
         {
             return $this->y / $this->x;
         }
+        return null;
     }
+
+    /**
+     * поворот
+     * @param $angle
+     */
+    public function rotate($angle)
+    {
+        if ($this->rotationCorrections[$angle])
+        {
+            $angle = $this->rotationCorrections[$angle];
+        }
+        $this->resource = imagerotate($this->resource, $angle, 0);
+        imagejpeg($this->resource, 'uploads/'.$this->id.".jpg");
+    }
+
 }

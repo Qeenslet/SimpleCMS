@@ -1,7 +1,11 @@
+var container;
 $( function()
 {
-    var container = $('#myfiles').mosaicflow({minColumns: 4});
-
+    container = $('#myfiles').mosaicflow();
+    $( window ).resize(function()
+    {
+        container.mosaicflow('refill');
+    });
     var mosaicManipulator =
         {
             create: function (images)
@@ -10,6 +14,7 @@ $( function()
                 {
                     var src = images[i].src;
                     var file = images[i].filename;
+                    var src2 = images[i].src2;
                     var w = 300 * Math.random();
                     var h = 400 * Math.random();
                     var prop = images[i].proportion;
@@ -29,16 +34,15 @@ $( function()
                     console.log(images[i]);
                     if (src && file )
                     {
-                        var html = this.makeDiv(src, file);
+                        var html = this.makeDiv(src, file, src2);
                         var elm = $(html);
                         container.mosaicflow('add', elm);
-                        container.mosaicflow('refill');
                     }
                 }
             },
-            makeDiv: function (src, file) {
-                var html = '<div class="span2 pcon  prodcont actioninside new">' +
-                    '<img src="' + src + '" alt="uploaded" onclick="control.callModal(\'' + file + '\', \'' + src + '\')" style="cursor: pointer" width="100%">\n' +
+            makeDiv: function (src, file, src2) {
+                var html = '<div class="mosaicflow__item">' +
+                    '<img src="' + src + '" alt="uploaded" onclick="control.callModal(\'' + file + '\', \'' + src2 + '\')" style="cursor: pointer" width="230px" height="140px">\n' +
                     '</div>';
                 return html;
             }
@@ -169,6 +173,7 @@ $( function()
                             else
                             {
                                 mosaicManipulator.create(data.images);
+                                container.mosaicflow('refill');
                             }
 
                         },

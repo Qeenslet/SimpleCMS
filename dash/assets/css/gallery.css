@@ -30,3 +30,46 @@
 .box.is-uploading .box__uploading {
     display: block;
 }
+.trashCan
+{
+    position: absolute;
+    top:25px;
+    right:35px;
+    cursor: pointer;
+    color: black;
+    opacity: 0.5;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 1px 1px white;
+    font-size: 250%;
+}
+.trashCan:hover
+{
+    opacity: 1;
+}
+.rotate90
+{
+    position: relative;
+    transform: rotate(90deg) translateY(-100%);
+    -webkit-transform: rotate(90deg) translateY(-100%);
+    -ms-transform: rotate(90deg) translateY(-100%);
+    -webkit-transform-origin: 0 0;
+}
+.rotate180
+{
+    position: relative;
+    transform: rotate(180deg) translate(-100%, -100%);
+    -webkit-transform: rotate(180deg) translate(-100%, -100%);
+    -ms-transform: rotate(180deg) translateX(-100%, -100%);
+    -webkit-transform-origin: 0 0;
+}
+.rotate270
+{
+    position: relative;
+    transform: rotate(270deg) translateX(-100%);
+    -webkit-transform: rotate(270deg) translateX(-100%);
+    -ms-transform: rotate(270deg) translateX(-100%);
+    -webkit-transform-origin: 0 0;
+}

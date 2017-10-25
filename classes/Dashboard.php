@@ -286,12 +286,17 @@ class Dashboard extends Project
             if (file_exists('uploads/' . $filename))
             {
                 unlink ('uploads/' . $filename);
+                $thumbName = $this->getPureFilename($filename);
+                if ($thumbName)
+                {
+                    unlink('uploads/thumbs/' . $thumbName . '.jpg');
+                }
+
             }
             return;
         }
         if (!empty($_GET['resize']) && !empty($_POST['filename']))
         {
-            //print_r($_POST);
             $this->resizer($_POST);
             exit;
         }
@@ -322,11 +327,16 @@ class Dashboard extends Project
             {
                 $w = $prop * $h;
             }
-            $row = array('{SRC}' => $srcPath . '/uploads/' . $one,
-                         '{FILE}' => $one,
-                         '{W}' => $w,
-                         '{H}' => $h);
-            $params['files_row'][]['{FILEROW}'] = Pagemaker::render('dash/image_row2.html', $row);
+            $pureFilename = $this->getPureFilename($one);
+            if (!empty($pureFilename))
+            {
+                $row = array('{SRC1}' => $srcPath . '/uploads/thumbs/' . $pureFilename . '.jpg',
+                    '{SRC2}' => $srcPath . '/uploads/' . $one,
+                    '{FILE}' => $one,
+                    '{W}' => $w,
+                    '{H}' => $h);
+                $params['files_row'][]['{FILEROW}'] = Pagemaker::render('dash/image_row2.html', $row);
+            }
         }
         $content = Pagemaker::render('dash/file_uploader.html', $params);
         $this->uniter('{FILES}', $content);
@@ -383,9 +393,20 @@ class Dashboard extends Project
         {
             $x = intval($dims[0]);
             $y = intval($dims[1]);
-            require_once('Imaginator.php');
-            $imaginator = new Imaginator($file, $post['dimensions']);
+            $imaginator = new Imaginator($file, '');
+            unlink ('uploads/' . $file);
             $imaginator->saveImageResize($x, $y);
+            $imaginator->saveCropped();
+        }
+        if (!empty($post['rotations']))
+        {
+            $angle = intval($post['rotations']);
+            $file = $this->getPureFilename($file);
+            $file = $file . '.jpg';
+            $imaginator = new Imaginator($file, '');
+            unlink ('uploads/' . $file);
+            $imaginator->rotate($angle);
+            $imaginator->saveCropped();
         }
     }
 
@@ -516,6 +537,7 @@ class Dashboard extends Project
         $blacklist = array(".php", ".phtml", ".php3", ".php4", ".html", ".htm");
         $error = null;
         $images = [];
+        //print_r($files); die;
         foreach ($files['files']['name'] as $index => $name)
         {
             //print_r('here'); die;
@@ -535,10 +557,21 @@ class Dashboard extends Project
                 if (empty($error))
                 {
                     $tmp = [];
-                    $uploadfile = "uploads/" . $name;
+                    $fileName = $this->getPureFilename($name);
+                    if ($type == 'image/jpg' || $type == 'image/jpeg')
+                    {
+                        $fileName .= '.jpg';
+                    }
+                    else
+                    {
+                        $fileName .= '.png';
+                    }
+                    $uploadfile = "uploads/" . $fileName;
                     try
                     {
                         move_uploaded_file($files['files']['tmp_name'][$index], $uploadfile);
+                        $imaginator = new Imaginator($fileName, '');
+                        $imaginator->saveCropped();
                     }
                     catch (Exception $e)
                     {
@@ -546,7 +579,9 @@ class Dashboard extends Project
                         break;
                     }
                     $urlPath = $this->getSetting('url_path') ? $this->getSetting('url_path') : '';
-                    $tmp['src'] = $urlPath . '/' . $uploadfile;
+                    $mainFile = $this->getPureFilename($fileName);
+                    $tmp['src'] = $urlPath . '/uploads/thumbs/' . $mainFile . '.jpg';
+                    $tmp['src2'] = $urlPath . '/uploads/' . $fileName;
                     $tmp['filename'] = $name;
                     $images[] = $tmp;
                 }
@@ -566,5 +601,22 @@ class Dashboard extends Project
             $result['images'] = $images;
         }
         return $result;
+    }
+
+
+
+    private function getPureFilename($filename)
+    {
+        $thumbNames = explode('.', $filename);
+        $tmpThumbNames = [];
+        foreach ($thumbNames as $part)
+        {
+            if ($part != end($thumbNames))
+            {
+                $tmpThumbNames[] = $part;
+            }
+        }
+        if (!empty($tmpThumbNames)) return implode('.', $tmpThumbNames);
+        return null;
     }
 }
