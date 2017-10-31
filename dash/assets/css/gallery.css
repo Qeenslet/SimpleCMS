@@ -1,7 +1,25 @@
 
-.mosaicflow__column {
-    float:left;
+#myfiles
+{
+    max-width: 1200px;
+    min-height: 1000px;
+    height: 100%;
+    overflow: auto;
 }
+
+#myfiles:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.mosaicflow__item
+{
+    width: 300px;
+    float: left;
+}
+
 .mosaicflow__item img {
     display:block;
     width:100%;

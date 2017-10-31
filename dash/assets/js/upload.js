@@ -1,10 +1,10 @@
-var container;
+var $container;
 $( function()
 {
-    container = $('#myfiles').mosaicflow();
-    $( window ).resize(function()
-    {
-        container.mosaicflow('refill');
+    $container = $('#myfiles').masonry({
+        // options
+        itemSelector: '.mosaicflow__item',
+        columnWidth: 150
     });
     var mosaicManipulator =
         {
@@ -31,12 +31,13 @@ $( function()
                     }
                     w = Math.round(w);
                     h = Math.round(h);
-                    console.log(images[i]);
+                    //console.log(images[i]);
                     if (src && file )
                     {
                         var html = this.makeDiv(src, file, src2);
                         var elm = $(html);
-                        container.mosaicflow('add', elm);
+                        $container.append(elm).masonry('appended', elm);
+                        $container.masonry();
                     }
                 }
             },
@@ -173,7 +174,7 @@ $( function()
                             else
                             {
                                 mosaicManipulator.create(data.images);
-                                container.mosaicflow('refill');
+                                $container.masonry();
                             }
 
                         },
@@ -201,6 +202,6 @@ $( function()
             }
         });
     });
-
+    setTimeout("$container.masonry()", 1000); //точно сформировался грид картинок
 });
 
